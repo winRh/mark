@@ -23,13 +23,14 @@ $(function(){
         e.stopPropagation();
     });
 });
+
 </script>
 
 </head>
 <body>
 
-<div class="tree well">
-<ul>
+<div class="tree well" style="    height: 100%;width: 20%;">
+<ul style="    margin-top: 40px;">
 	<li class="parent_li">
 		<span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> Winrh博文</span> 
 		<ul>
@@ -53,7 +54,7 @@ $(function(){
 				<span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> 数据库</span> 
 				<ul>
 					<li>
-						<span><i class="icon-leaf"></i> MySQL</span> 
+						<span onclick="getArticle('https://blog.csdn.net/qq_32117641/category_8659414.html')"><i class="icon-leaf"></i> MySQL</span> 
 					</li>
 					<li>
 						<span><i class="icon-leaf"></i> Sqlserver</span> 
@@ -64,7 +65,19 @@ $(function(){
 	</li>
 </ul>
 </div>
+<iframe id="mycontent" width="500px" height="500px"></iframe>
 
 
-
+<script>
+var content;
+function getArticle(path){
+	$.ajax({
+	    type: "GET",
+	    url: "https://cors-anywhere.herokuapp.com/" + path,
+	    success: function(data) {
+			$("#mycontent").html(data);
+	    }
+	});
+}
+</script>
 </body></html>
