@@ -1,83 +1,83 @@
-
 <!--主要样式-->
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="showdown-master/dist/showdown.min.js"></script>
+<script type="text/javascript" src="db/mysql.js"></script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-<script type="text/javascript">
-$(function(){
-    $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
-    $('.tree li.parent_li > span').on('click', function (e) {
-        var children = $(this).parent('li.parent_li').find(' > ul > li');
-        if (children.is(":visible")) {
-            children.hide('fast');
-            $(this).attr('title', 'Expand this branch').find(' > i').addClass('glyphicon glyphicon-plus-sign').removeClass('glyphicon-minus-sign');
-        } else {
-            children.show('fast');
-            $(this).attr('title', 'Collapse this branch').find(' > i').addClass('glyphicon-minus-sign').removeClass('glyphicon-plus-sign');
-        }
-        e.stopPropagation();
-    });
-});
+    <script type="text/javascript">
+        $(function () {
+            $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+            $('.tree li.parent_li > span').on('click', function (e) {
+                var children = $(this).parent('li.parent_li').find(' > ul > li');
+                if (children.is(":visible")) {
+                    children.hide('fast');
+                    $(this).attr('title', 'Expand this branch').find(' > i').addClass('glyphicon glyphicon-plus-sign').removeClass('glyphicon-minus-sign');
+                } else {
+                    children.show('fast');
+                    $(this).attr('title', 'Collapse this branch').find(' > i').addClass('glyphicon-minus-sign').removeClass('glyphicon-plus-sign');
+                }
+                e.stopPropagation();
+            });
+        });
 
-</script>
+    </script>
 
 </head>
 <body>
 
-<div class="tree well" style="    height: 100%;width: 20%;">
-<ul style="    margin-top: 40px;">
-	<li class="parent_li">
-		<span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> Winrh博文</span> 
-		<ul>
-		
-		
-			<li class="parent_li">
-				<span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> 中间件</span> 
-				<ul>
-					<li>
-						<span><i class="icon-leaf"></i> Apollo</span> 
-					</li>
-					<li>
-						<span><i class="icon-leaf"></i> Redis</span> 
-					</li>
-				</ul>
-			</li>
-			
-			
-			
-			<li class="parent_li">
-				<span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> 数据库</span> 
-				<ul>
-					<li>
-						<span onclick="getArticle('https://blog.csdn.net/qq_32117641/category_8659414.html')"><i class="icon-leaf"></i> MySQL</span> 
-					</li>
-					<li>
-						<span><i class="icon-leaf"></i> Sqlserver</span> 
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-</ul>
+<div class="tree well" style="    height: 100%;width: 20%;display: inline-block;">
+    <ul style="    margin-top: 40px;">
+        <li class="parent_li">
+            <span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> Winrh博文</span>
+            <ul>
+
+
+                <li class="parent_li">
+                    <span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> 中间件</span>
+                    <ul>
+                        <li>
+                            <span><i class="icon-leaf"></i> Apollo</span>
+                        </li>
+                        <li>
+                            <span><i class="icon-leaf"></i> Redis</span>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="parent_li">
+                    <span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> 数据库</span>
+                    <ul>
+                        <li>
+                            <span onclick="compileMysql()"><i
+                                    class="icon-leaf"></i> MySQL</span>
+                        </li>
+                        <li>
+                            <span><i class="icon-leaf"></i> Sqlserver</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </div>
-<iframe id="mycontent" width="500px" height="500px"></iframe>
+<div id="mycontent" style="width:80%;height:100%;display: inline-block;float: right;background-color:#eeeeee;overflow: scroll;padding-left: 20px;"></div>
 
 
 <script>
-var content;
-function getArticle(path){
-	$.ajax({
-	    type: "GET",
-	    url: "https://cors-anywhere.herokuapp.com/" + path,
-	    success: function(data) {
-			$("#mycontent").html(data);
-	    }
-	});
-}
+    function compileMysql() {
+        var text = getMysql();
+        var converter = new showdown.Converter();
+        var html = converter.makeHtml(text);
+        document.getElementById("mycontent").innerHTML = html;
+    }
 </script>
-</body></html>
+</body>
+</html>
