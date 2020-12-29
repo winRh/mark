@@ -1,21 +1,11 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta charset="utf-8">
-<meta name="renderer" content="webkit">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
 <!--主要样式-->
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="js/showdown.js"></script>
-<script src="js/jquery.ias.js"></script>
-<script src="js/scripts.js"></script>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
 <script type="text/javascript">
@@ -39,7 +29,7 @@ $(function(){
 </head>
 <body>
 
-<div class="tree well" style="    display: inline-block;height: 100%;width: 20%;">
+<div class="tree well" style="    height: 100%;width: 20%;">
 <ul style="    margin-top: 40px;">
 	<li class="parent_li">
 		<span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> Winrh博文</span> 
@@ -64,7 +54,7 @@ $(function(){
 				<span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> 数据库</span> 
 				<ul>
 					<li>
-						<span onclick="getArticle('md/mysql.md')"><i class="icon-leaf"></i> MySQL</span> 
+						<span onclick="getArticle('https://blog.csdn.net/qq_32117641/category_8659414.html')"><i class="icon-leaf"></i> MySQL</span> 
 					</li>
 					<li>
 						<span><i class="icon-leaf"></i> Sqlserver</span> 
@@ -75,24 +65,19 @@ $(function(){
 	</li>
 </ul>
 </div>
-<div id="mycontent" class="mycontent" style="float: right;height: 100%;width: 80%;overflow: scroll;"></div>
+<iframe id="mycontent" width="500px" height="500px"></iframe>
 
 
-<script type="application/javascript">
-  $(function (){
-      $.getJSON("db.json", function (data){
-        var strHtml = "123";
-        //清空内容
-        $.each(data, function (infoIndex, info){
-          strHtml += "姓名：" + info["name"] + "<br>";
-          strHtml += "性别：" + info["sex"] + "<br>";
-          strHtml += "邮箱：" + info["email"] + "<br>";
-          strHtml += "<hr>"
-        })
-		console.log(strHtml)
-        //显示处理后的数据 
-      })
-  })
+<script>
+var content;
+function getArticle(path){
+	$.ajax({
+	    type: "GET",
+	    url: "https://cors-anywhere.herokuapp.com/" + path,
+	    success: function(data) {
+			$("#mycontent").html(data);
+	    }
+	});
+}
 </script>
-
 </body></html>
