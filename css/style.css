@@ -11,12 +11,17 @@
     -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05)
 }
+.mycontent::-webkit-scrollbar {
+        display: none;/*隐藏滚动条*/
+    }
 .tree li {
+	    cursor: pointer;
     list-style-type:none;
     margin:0;
     padding:10px 5px 0 5px;
     position:relative
 }
+
 .tree li::before, .tree li::after {
     content:'';
     left:-20px;
@@ -45,6 +50,8 @@
     padding:3px 8px;
     text-decoration:none
 }
+
+
 .tree li.parent_li>span {
     cursor:pointer
 }
