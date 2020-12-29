@@ -5,6 +5,7 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="showdown-master/dist/showdown.min.js"></script>
 <script type="text/javascript" src="db/mysql.js"></script>
+<script type="text/javascript" src="db/git.js"></script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -28,7 +29,11 @@
         });
 
     </script>
-
+    <style>
+        blockquote {
+            background-color: #dfdfdf;
+        }
+    </style>
 </head>
 <body>
 
@@ -38,6 +43,33 @@
             <span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> Winrh博文</span>
             <ul>
 
+
+                <li class="parent_li">
+                    <span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> Git</span>
+                    <ul>
+                        <li>
+                            <span onclick="compileGit()"><i class="icon-leaf"></i> 合并分支报冲突怎么解决</span>
+                        </li>
+                        <li>
+                            <span onclick="compileWriteInterface()"><i class="icon-leaf"></i> 在GitHub上写接口并调用它</span>
+                        </li>
+                        <li>
+                            <span onclick="compileCloudDB()"><i class="icon-leaf"></i> 如何用GitHub作云服务器和云数据库，甚至动态博客</span>
+                        </li>
+                        <li>
+                            <span onclick="compileGitPull()"><i class="icon-leaf"></i> git pull时冲突报错怎么办</span>
+                        </li>
+                        <li>
+                            <span onclick="compileCannotResolve()"><i class="icon-leaf"></i> clone时报错 Couldn‘t resolve host ‘gitlab‘</span>
+                        </li>
+                        <li>
+                            <span onclick="compileGitSVN()"><i class="icon-leaf"></i> Git与SVN</span>
+                        </li>
+                        <li>
+                            <span onclick="compileSetPass()"><i class="icon-leaf"></i> 记住用户名密码，不用每次输入</span>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="parent_li">
                     <span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> 中间件</span>
@@ -68,7 +100,8 @@
         </li>
     </ul>
 </div>
-<div id="mycontent" style="width:80%;height:100%;display: inline-block;float: right;background-color:#eeeeee;overflow: scroll;padding-left: 20px;"></div>
+<div id="mycontent"
+     style="width:80%;height:100%;display: inline-block;float: right;background-color:#eeeeee;overflow: scroll;padding-left: 20px;padding-top: 20px;"></div>
 
 
 <script>
@@ -78,6 +111,43 @@
         var html = converter.makeHtml(text);
         document.getElementById("mycontent").innerHTML = html;
     }
+
+    function compileGit() {
+        var text = getGit();
+        var converter = new showdown.Converter();
+        var html = converter.makeHtml(text);
+        document.getElementById("mycontent").innerHTML = html;
+    }
+
+    function compileWriteInterface() {
+        var text = WriteInterface();
+        var converter = new showdown.Converter();
+        var html = converter.makeHtml(text);
+        document.getElementById("mycontent").innerHTML = html;
+    }
+
+    function compileCloudDB() {
+        var text = CloudDB();
+        var converter = new showdown.Converter();
+        var html = converter.makeHtml(text);
+        document.getElementById("mycontent").innerHTML = html;
+    }
+
+    function compileGitPull() {
+        var text = GitPull();
+        var converter = new showdown.Converter();
+        var html = converter.makeHtml(text);
+        document.getElementById("mycontent").innerHTML = html;
+    }
+
+    function compileGitPull() {
+        var text = GitPull();
+        var converter = new showdown.Converter();
+        var html = converter.makeHtml(text);
+        document.getElementById("mycontent").innerHTML = html;
+    }
+
+
 </script>
 </body>
 </html>
