@@ -264,3 +264,39 @@ function compileSetPass() {
 	var html = converter.makeHtml(text);
 	document.getElementById("mycontent").innerHTML = html;
 }
+
+function compileMysql(obj) {
+	var text = getMysql();
+	var converter = new showdown.Converter();
+	var html = converter.makeHtml(text);
+	document.getElementById("mycontent").innerHTML = html;
+	console.log($(obj).html())
+}
+
+function compileGit() {
+	var text = getGit();
+	var converter = new showdown.Converter();
+	var html = converter.makeHtml(text);
+	document.getElementById("mycontent").innerHTML = html;
+}
+
+function compileWriteInterface() {
+	var text = WriteInterface();
+	var converter = new showdown.Converter();
+	var html = converter.makeHtml(text);
+	document.getElementById("mycontent").innerHTML = html;
+}
+
+function compileCloudDB() {
+	var text = CloudDB();
+	var converter = new showdown.Converter();
+	var html = converter.makeHtml(text);
+	document.getElementById("mycontent").innerHTML = html;
+}
+
+function compileGitPull() {
+	var text = GitPull();
+	var converter = new showdown.Converter();
+	var html = converter.makeHtml(text);
+	document.getElementById("mycontent").innerHTML = html;
+}

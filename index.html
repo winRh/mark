@@ -6,6 +6,7 @@
 <script src="showdown-master/dist/showdown.min.js"></script>
 <script type="text/javascript" src="db/mysql.js"></script>
 <script type="text/javascript" src="db/git.js"></script>
+<script type="text/javascript" src="js/loveClick.js"></script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -34,6 +35,7 @@
             background-color: #dfdfdf;
         }
     </style>
+	
 </head>
 <body>
 
@@ -88,8 +90,8 @@
                     <span title="Collapse this branch"><i class="glyphicon glyphicon-plus-sign"></i> 数据库</span>
                     <ul>
                         <li>
-                            <span onclick="compileMysql()"><i
-                                    class="icon-leaf"></i> MySQL</span>
+                            <span onclick="compileMysql(this)"><i
+                                    class="icon-leaf-mysql"></i> MySQL</span>
                         </li>
                         <li>
                             <span><i class="icon-leaf"></i> Sqlserver</span>
@@ -104,50 +106,9 @@
      style="width:80%;height:100%;display: inline-block;float: right;background-color:#eeeeee;overflow: scroll;padding-left: 20px;padding-top: 20px;"></div>
 
 
-<script>
-    function compileMysql() {
-        var text = getMysql();
-        var converter = new showdown.Converter();
-        var html = converter.makeHtml(text);
-        document.getElementById("mycontent").innerHTML = html;
-    }
+<script type="text/javascript">
 
-    function compileGit() {
-        var text = getGit();
-        var converter = new showdown.Converter();
-        var html = converter.makeHtml(text);
-        document.getElementById("mycontent").innerHTML = html;
-    }
-
-    function compileWriteInterface() {
-        var text = WriteInterface();
-        var converter = new showdown.Converter();
-        var html = converter.makeHtml(text);
-        document.getElementById("mycontent").innerHTML = html;
-    }
-
-    function compileCloudDB() {
-        var text = CloudDB();
-        var converter = new showdown.Converter();
-        var html = converter.makeHtml(text);
-        document.getElementById("mycontent").innerHTML = html;
-    }
-
-    function compileGitPull() {
-        var text = GitPull();
-        var converter = new showdown.Converter();
-        var html = converter.makeHtml(text);
-        document.getElementById("mycontent").innerHTML = html;
-    }
-
-    function compileGitPull() {
-        var text = GitPull();
-        var converter = new showdown.Converter();
-        var html = converter.makeHtml(text);
-        document.getElementById("mycontent").innerHTML = html;
-    }
-
-
+clickEffect();//调用
 </script>
 </body>
 </html>
